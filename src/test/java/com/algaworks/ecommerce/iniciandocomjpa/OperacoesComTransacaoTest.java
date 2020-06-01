@@ -2,9 +2,39 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 public class OperacoesComTransacaoTest extends EntityManagerTest {
+
+    @Test
+    public void inserirOPrimeiroObjeto() {
+        var produto = new Produto();
+
+        produto.setId(2);
+        produto.setNome("Câmera Canon");
+        produto.setDescricao("A melhor definição para suas fotos.");
+        produto.setPreco(new BigDecimal(5000));
+
+        // Opção mais indicada
+//        entityManager.getTransaction().begin();
+//        entityManager.persist(produto);
+//        entityManager.getTransaction().commit();
+
+        // Opção menos indicada
+        entityManager.persist(produto);
+
+        entityManager.getTransaction().begin();
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        var produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+
+        Assert.assertNotNull(produtoVerificacao);
+    }
 
     @Test
     public void abrirEFecharATransacao() {
