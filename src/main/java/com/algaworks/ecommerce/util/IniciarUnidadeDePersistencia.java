@@ -1,11 +1,8 @@
 package com.algaworks.ecommerce.util;
 
-import com.algaworks.ecommerce.model.Produto;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.Arrays;
 
 public class IniciarUnidadeDePersistencia {
 
