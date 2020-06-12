@@ -10,15 +10,16 @@ import java.math.BigDecimal;
 @Getter @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "produto")
-public class Produto {
+@Table(name = "itemPedido")
+public class ItemPedido {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
-    private String descricao;
-    private BigDecimal preco;
+    private Integer pedidoId;
+    private Integer produtoId;
+    private BigDecimal precoProduto;
+    private Integer quantidade;
 
 }
