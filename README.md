@@ -8,7 +8,7 @@ Ferramentas utilizadas no projeto/curso:
 
 - Git: Fork
 
-- MySQL: Workbenk
+- MySQL: Workbench
 
 - Client API: Postman
 
