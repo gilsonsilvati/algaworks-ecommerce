@@ -2,23 +2,24 @@ package com.algaworks.ecommerce.model;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 @Getter @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "produto")
-public class Produto {
+@Table(name = "estoque")
+public class Estoque {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
-    private String descricao;
-    private BigDecimal preco;
+    @Column(name = "produto_id")
+    private Integer produtoId;
+
+    private Integer quantidade;
 
 }

@@ -1,11 +1,11 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.model.enums.Sexo;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -22,5 +22,7 @@ public class Cliente {
 
     @NonNull
     private String nome;
+
+    private Sexo sexo;
 
 }
