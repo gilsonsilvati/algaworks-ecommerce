@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Getter @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -14,7 +12,6 @@ import javax.persistence.*;
 public class Cliente {
 
     @EqualsAndHashCode.Include
-    @NonNull
     @Id
     private Integer id;
 
