@@ -29,7 +29,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     public void inserirObjetoComMerge() {
         var produto = new Produto();
 
-        produto.setId(4);
         produto.setNome("Microfone Rode Vide");
         produto.setDescricao("A melhor qualidade de som.");
         produto.setPreco(new BigDecimal(1000));
@@ -63,7 +62,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     @Test
     public void atualizarObjeto() {
         var produto = new Produto();
-        produto.setId(1);
         produto.setNome("Kindle Paperwhite");
         produto.setDescricao("Conheça o novo Kindle.");
         produto.setPreco(new BigDecimal(599));
@@ -96,7 +94,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     public void inserirOPrimeiroObjeto() {
         var produto = new Produto();
 
-        produto.setId(2);
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos.");
         produto.setPreco(new BigDecimal(5000));

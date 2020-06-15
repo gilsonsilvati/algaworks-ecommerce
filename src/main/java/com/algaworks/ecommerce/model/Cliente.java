@@ -5,14 +5,15 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "cliente")
+@Getter @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente {
 
     @EqualsAndHashCode.Include
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NonNull
