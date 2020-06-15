@@ -2,19 +2,17 @@ package com.algaworks.ecommerce.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "estoque")
+@Getter @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Estoque {
 
     @EqualsAndHashCode.Include
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "produto_id")

@@ -16,7 +16,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 
     @Test
     public void inserirRegistro() {
-        var cliente = new Cliente(3, "Leka Show Teste");
+        var cliente = new Cliente();
+        cliente.setNome("Leka Show Teste");
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

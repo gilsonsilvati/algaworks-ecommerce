@@ -3,26 +3,23 @@ package com.algaworks.ecommerce.model;
 import com.algaworks.ecommerce.model.enums.Sexo;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "cliente")
+@Getter @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente {
 
     @EqualsAndHashCode.Include
-    @NonNull
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NonNull
     private String nome;
 
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
 }

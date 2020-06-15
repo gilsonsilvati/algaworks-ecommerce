@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 public class EntityManagerTest {
 
-    protected static EntityManagerFactory entityManagerFactory;
+    private static EntityManagerFactory entityManagerFactory;
 
     protected EntityManager entityManager;
 
