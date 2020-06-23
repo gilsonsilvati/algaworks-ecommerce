@@ -16,7 +16,6 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NonNull
     private String nome;
 
     @Enumerated(EnumType.STRING)
