@@ -6,7 +6,6 @@ import com.algaworks.ecommerce.model.ItemPedido;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;

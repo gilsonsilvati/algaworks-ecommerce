@@ -1,0 +1,40 @@
+package com.algaworks.ecommerce.relacionamentos;
+
+import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.ItemPedido;
+import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
+import com.algaworks.ecommerce.model.enums.StatusPedido;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
+public class RelacionamentoOneToManyTest extends EntityManagerTest {
+
+    @Test
+    public void verificarRelacionamento() {
+        var cliente = entityManager.find(Cliente.class, 1);
+
+        var pedido = new Pedido();
+        pedido.setStatus(StatusPedido.AGUARDANDO);
+        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setTotal(BigDecimal.TEN);
+        pedido.setCliente(cliente);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(pedido);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        var clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
+
+        assertFalse(clienteVerificacao.getPedidos().isEmpty());
+    }
+
+}

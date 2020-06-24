@@ -4,6 +4,7 @@ import com.algaworks.ecommerce.model.enums.Sexo;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cliente")
@@ -20,5 +21,8 @@ public class Cliente {
 
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 
 }
