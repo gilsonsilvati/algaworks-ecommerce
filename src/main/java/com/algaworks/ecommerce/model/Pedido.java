@@ -32,13 +32,16 @@ public class Pedido {
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
-    @Column(name = "nota_fiscal_id")
-    private Integer notaFiscalId;
-
     private BigDecimal total;
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+
+    @OneToOne(mappedBy = "pedido")
+    private PagamentoCartao pagamentoCartao;
+
+    @OneToOne(mappedBy = "pedido")
+    private NotaFiscal notaFiscal;
 
     @Embedded
     private EnderecoEntrega enderecoEntrega;
