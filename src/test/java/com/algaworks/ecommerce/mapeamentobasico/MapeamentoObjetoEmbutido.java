@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.EnderecoEntrega;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
@@ -41,10 +42,13 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
     }
 
     private Pedido criaPedido(EnderecoEntrega enderecoEntrega) {
+        var cliente = entityManager.find(Cliente.class, 1);
+
         var pedido = new Pedido();
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
+        pedido.setCliente(cliente);
         pedido.setEnderecoEntrega(enderecoEntrega);
 
         return pedido;
