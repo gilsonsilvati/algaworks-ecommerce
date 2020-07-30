@@ -1,5 +1,8 @@
 package com.algaworks.ecommerce.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum StatusPedido {
 
     AGUARDANDO("Aguardando"),
@@ -10,10 +13,6 @@ public enum StatusPedido {
 
     StatusPedido(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
 }

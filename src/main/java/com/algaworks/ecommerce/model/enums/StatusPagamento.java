@@ -1,5 +1,8 @@
 package com.algaworks.ecommerce.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum StatusPagamento {
 
     CANCELADO("Cancelado"),
@@ -10,10 +13,6 @@ public enum StatusPagamento {
 
     StatusPagamento(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
 }

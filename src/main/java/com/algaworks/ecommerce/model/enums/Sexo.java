@@ -1,5 +1,8 @@
 package com.algaworks.ecommerce.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Sexo {
 
     FEMININO("Feminino"),
@@ -9,10 +12,6 @@ public enum Sexo {
 
     Sexo(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
 }
