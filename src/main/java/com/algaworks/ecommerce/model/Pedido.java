@@ -1,5 +1,7 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import lombok.*;
 
@@ -8,10 +10,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "pedido")
+@EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
+@Getter @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Pedido {
 
     @EqualsAndHashCode.Include
@@ -26,10 +29,10 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
-    @Column(name = "data_criacao")
+    @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(name = "data_ultima_atualizacao")
+    @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
 
     @Column(name = "data_conclusao")
@@ -48,6 +51,10 @@ public class Pedido {
 
     @Embedded
     private EnderecoEntrega enderecoEntrega;
+
+    public boolean podeGerarNota() {
+        return StatusPedido.PAGO.equals(status) && notaFiscal == null;
+    }
 
     @PrePersist
     public void aoPersistir() {
