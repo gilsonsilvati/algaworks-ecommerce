@@ -3,17 +3,17 @@ package com.algaworks.ecommerce.mapeamentoavancao;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
 public class ChaveCompostaTest extends EntityManagerTest {
 
     @Test
-    public void salvarItem() {
-        entityManager.getTransaction().begin();
-
+    public void deve_salvar_item() {
         var cliente = entityManager.find(Cliente.class, 1);
         var produto = entityManager.find(Produto.class, 1);
 
@@ -23,9 +23,8 @@ public class ChaveCompostaTest extends EntityManagerTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(produto.getPreco());
 
+        entityManager.getTransaction().begin();
         entityManager.persist(pedido);
-
-        entityManager.flush();
 
         var itemPedido = new ItemPedido();
 //        itemPedido.setPedidoId(pedido.getId()); @IdClass
@@ -37,19 +36,18 @@ public class ChaveCompostaTest extends EntityManagerTest {
         itemPedido.setQuantidade(1);
 
         entityManager.persist(itemPedido);
-
         entityManager.getTransaction().commit();
 
         entityManager.clear();
 
         var pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        Assert.assertNotNull(pedidoVerificacao);
-        Assert.assertFalse(pedidoVerificacao.getItens().isEmpty());
+        assertNotNull(pedidoVerificacao);
+        assertFalse(pedidoVerificacao.getItens().isEmpty());
     }
 
     @Test
     public void bucarItem() {
         var itemPedido = entityManager.find(ItemPedido.class, new ItemPedidoId(1, 1));
-        Assert.assertNotNull(itemPedido);
+        assertNotNull(itemPedido);
     }
 }
