@@ -1,12 +1,12 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.enums.Sexo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MapeandoEnumeracoesTest extends EntityManagerTest {
+public class MapeandoEnumeracoesTest extends EntityManagerConfig {
 
     @Test
     public void testarEnum() {

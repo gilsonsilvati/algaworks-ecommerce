@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.relacionamentos;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Categoria;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertFalse;
 
-public class RelacionamentoManyToManyTest extends EntityManagerTest {
+public class RelacionamentoManyToManyTest extends EntityManagerConfig {
 
     @Test
     public void verificarRelacionamento() {

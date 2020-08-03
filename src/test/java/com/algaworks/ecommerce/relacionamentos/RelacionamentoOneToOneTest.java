@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.relacionamentos;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.PagamentoCartao;
 import com.algaworks.ecommerce.model.Pedido;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
-public class RelacionamentoOneToOneTest extends EntityManagerTest {
+public class RelacionamentoOneToOneTest extends EntityManagerConfig {
 
     @Test
     public void verificarRelacionamento() {

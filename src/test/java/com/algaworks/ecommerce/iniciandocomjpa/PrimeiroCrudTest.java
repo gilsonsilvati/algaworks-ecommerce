@@ -1,11 +1,11 @@
 package com.algaworks.ecommerce.iniciandocomjpa;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PrimeiroCrudTest extends EntityManagerTest {
+public class PrimeiroCrudTest extends EntityManagerConfig {
 
     @Test
     public void buscar() {

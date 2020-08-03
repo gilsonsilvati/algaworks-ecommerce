@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.mapeamentoavancao;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-public class ChaveCompostaTest extends EntityManagerTest {
+public class ChaveCompostaTest extends EntityManagerConfig {
 
     @Test
     public void deve_salvar_item() {

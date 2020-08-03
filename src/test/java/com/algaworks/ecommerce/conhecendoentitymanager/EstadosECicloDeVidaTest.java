@@ -1,10 +1,10 @@
 package com.algaworks.ecommerce.conhecendoentitymanager;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Categoria;
 import org.junit.Test;
 
-public class EstadosECicloDeVidaTest extends EntityManagerTest {
+public class EstadosECicloDeVidaTest extends EntityManagerConfig {
 
     @Test
     public void analisarEstados() {

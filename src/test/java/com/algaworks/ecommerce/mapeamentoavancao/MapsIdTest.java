@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.mapeamentoavancao;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Assert;
@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class MapsIdTest extends EntityManagerTest {
+public class MapsIdTest extends EntityManagerConfig {
 
     @Test
     public void inserirPagamento() {

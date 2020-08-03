@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.conhecendoentitymanager;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
@@ -8,7 +8,7 @@ import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ListenerTest extends EntityManagerTest {
+public class ListenerTest extends EntityManagerConfig {
 
     @Test
     public void carregarEntidades() {

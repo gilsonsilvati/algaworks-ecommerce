@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.relacionamentos;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertFalse;
 
-public class RelacionamentoOneToManyTest extends EntityManagerTest {
+public class RelacionamentoOneToManyTest extends EntityManagerConfig {
 
     @Test
     public void verificarRelacionamento() {
