@@ -33,8 +33,10 @@ public class Pedido extends EntidadeBase {
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal total;
 
+    @Column(length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
