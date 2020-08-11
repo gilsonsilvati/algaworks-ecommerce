@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.model.base.EntidadeBase;
 import com.algaworks.ecommerce.model.enums.Sexo;
 import lombok.*;
 
@@ -12,13 +13,7 @@ import java.util.Map;
 @Table(name = "cliente")
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cliente {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Cliente extends EntidadeBase {
 
     private String nome;
 

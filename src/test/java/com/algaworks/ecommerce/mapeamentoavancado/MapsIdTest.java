@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancao;
+package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;

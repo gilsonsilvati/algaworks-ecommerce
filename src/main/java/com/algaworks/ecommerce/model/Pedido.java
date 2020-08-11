@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
+import com.algaworks.ecommerce.model.base.EntidadeBase;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import lombok.*;
 
@@ -14,13 +15,7 @@ import java.util.List;
 @Table(name = "pedido")
 @EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Pedido {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Pedido extends EntidadeBase {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")

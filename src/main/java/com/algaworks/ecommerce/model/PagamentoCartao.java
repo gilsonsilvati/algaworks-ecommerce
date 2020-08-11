@@ -1,22 +1,15 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.model.base.EntidadeBase;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "pagamento_cartao")
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class PagamentoCartao {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @Column(name = "pedido_id")
-    private Integer id;
+public class PagamentoCartao extends EntidadeBase {
 
     @MapsId
     @OneToOne(optional = false)

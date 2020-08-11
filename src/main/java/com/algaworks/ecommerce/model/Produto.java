@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.model.base.EntidadeBase;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,13 +13,7 @@ import java.util.List;
 @Table(name = "produto")
 @EntityListeners({ GenericoListener.class })
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Produto {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Produto extends EntidadeBase {
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
