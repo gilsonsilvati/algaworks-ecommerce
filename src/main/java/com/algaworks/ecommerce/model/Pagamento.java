@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pagamento")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_pagamento")
 @Getter @Setter
 public abstract class Pagamento extends EntidadeBase {
