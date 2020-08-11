@@ -1,16 +1,13 @@
 package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
-import com.algaworks.ecommerce.model.Cliente;
-import com.algaworks.ecommerce.model.Pagamento;
-import com.algaworks.ecommerce.model.PagamentoCartao;
-import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class HerancaTest extends EntityManagerConfig {
 
@@ -32,20 +29,20 @@ public class HerancaTest extends EntityManagerConfig {
     @Test
     public void deve_buscar_pagamentos() {
         List<Pagamento> pagamentos = entityManager.createQuery("SELECT p FROM Pagamento p").getResultList();
-//        assertFalse(pagamentos.isEmpty());
+        assertFalse(pagamentos.isEmpty());
     }
 
     @Test
     public void deve_incluir_pagamento_pedido() {
         var pedido = entityManager.find(Pedido.class, 1);
 
-        PagamentoCartao pagamentoCartao = new PagamentoCartao();
-        pagamentoCartao.setPedido(pedido);
-        pagamentoCartao.setStatus(StatusPagamento.PROCESSANDO);
-        pagamentoCartao.setNumeroCartao("123");
+        var boleto = new PagamentoBoleto();
+        boleto.setPedido(pedido);
+        boleto.setStatus(StatusPagamento.PROCESSANDO);
+        boleto.setCodigoBarras("1234567890");
 
         entityManager.getTransaction().begin();
-        entityManager.persist(pagamentoCartao);
+        entityManager.persist(boleto);
         entityManager.getTransaction().commit();
 
         entityManager.clear();

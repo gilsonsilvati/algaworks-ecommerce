@@ -8,6 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pagamento")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Não é necessário: valor já é default
+@DiscriminatorColumn(name = "tipo_pagamento",
+        discriminatorType = DiscriminatorType.STRING) // Não é necessário: valor já é default
 @Getter @Setter
 public abstract class Pagamento extends EntidadeBase {
 
