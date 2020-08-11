@@ -7,8 +7,9 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-//@Table(name = "pagamento")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "pagamento")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_pagamento")
 @Getter @Setter
 public abstract class Pagamento extends EntidadeBase {
 
