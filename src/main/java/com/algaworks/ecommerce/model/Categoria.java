@@ -11,6 +11,7 @@ import java.util.List;
 @Getter @Setter
 public class Categoria extends EntidadeBase {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
     @ManyToOne

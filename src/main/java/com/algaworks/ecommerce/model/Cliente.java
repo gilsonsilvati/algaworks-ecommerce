@@ -16,7 +16,10 @@ import java.util.Map;
 @Getter @Setter
 public class Cliente extends EntidadeBase {
 
+    @Column(length = 100, nullable = false)
     private String nome;
+
+    @Column(length = 11, nullable = false)
     private String cpf;
 
     @ElementCollection
@@ -25,7 +28,7 @@ public class Cliente extends EntidadeBase {
     @Column(name = "descricao")
     private Map<String, String> contatos;
 
-    @Column(table = "cliente_detalhe")
+    @Column(length = 30, nullable = false, table = "cliente_detalhe")
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 

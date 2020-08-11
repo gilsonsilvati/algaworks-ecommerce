@@ -25,7 +25,7 @@ public class Produto extends EntidadeBase {
     @Column(precision = 10, scale = 2)
     private BigDecimal preco;
 
-    @Column(name = "data_criacao", updatable = false)
+    @Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
@@ -45,11 +45,21 @@ public class Produto extends EntidadeBase {
 
     @ElementCollection
     @CollectionTable(name = "produto_tag", joinColumns = @JoinColumn(name = "produto_id"))
-    @Column(name = "tag")
+    @Column(name = "tag", length = 50, nullable = false)
     private List<String> tags;
 
     @ElementCollection
     @CollectionTable(name = "produto_atributo", joinColumns = @JoinColumn(name = "produto_id"))
     private List<Atributo> atributos;
+
+    @PrePersist
+    public void aoPersistir() {
+        dataCriacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void aoAtualizar() {
+        dataUltimaAtualizacao = LocalDateTime.now();
+    }
 
 }
