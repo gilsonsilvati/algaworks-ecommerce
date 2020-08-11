@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) },
+    indexes = { @Index(name = "idx_nome", columnList = "nome"), @Index(name = "idx_cpf", columnList = "cpf") })
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Getter @Setter
 public class Cliente extends EntidadeBase {
 
     private String nome;
+    private String cpf;
 
     @ElementCollection
     @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id"))
