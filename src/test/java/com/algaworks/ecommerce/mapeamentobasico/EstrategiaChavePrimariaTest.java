@@ -1,11 +1,11 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Categoria;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class EstrategiaChavePrimariaTest extends EntityManagerTest {
+public class EstrategiaChavePrimariaTest extends EntityManagerConfig {
 
     @Test
     public void testarEstrategiaChave() {

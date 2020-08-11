@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.relacionamentos;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Test;
@@ -9,9 +9,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 
-public class RelacionamentoOneToManyTest extends EntityManagerTest {
+public class RelacionamentoOneToManyTest extends EntityManagerConfig {
 
     @Test
     public void verificarRelacionamento() {
@@ -45,18 +44,15 @@ public class RelacionamentoOneToManyTest extends EntityManagerTest {
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(pedido);
-
         ItemPedido itemPedido = new ItemPedido();
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
-//        itemPedido.setPedidoId(pedido.getId()); @IdClass
-//        itemPedido.setProdutoId(produto.getId()); @IdClass
-        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
 
+        entityManager.getTransaction().begin();
+        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
         entityManager.getTransaction().commit();
 

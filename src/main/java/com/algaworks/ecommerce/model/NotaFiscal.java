@@ -1,8 +1,7 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.algaworks.ecommerce.model.base.EntidadeBase;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,19 +9,15 @@ import java.util.Date;
 @Entity
 @Table(name = "nota_fiscal")
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class NotaFiscal {
+public class NotaFiscal extends EntidadeBase {
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+    @MapsId // Quando nossa FK também é uma PK
     @OneToOne(optional = false)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
-    private String xml;
+    @Lob
+    private byte[] xml;
 
     @Column(name = "data_emissao")
     private Date dataEmissao;

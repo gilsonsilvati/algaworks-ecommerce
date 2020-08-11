@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.EnderecoEntrega;
 import com.algaworks.ecommerce.model.Pedido;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class MapeamentoObjetoEmbutido extends EntityManagerTest {
+public class MapeamentoObjetoEmbutido extends EntityManagerConfig {
 
     @Test
     public void analizarMapeamentoObjetoEmbutido() {

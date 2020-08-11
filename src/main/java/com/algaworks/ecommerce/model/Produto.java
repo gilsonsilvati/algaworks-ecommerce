@@ -1,5 +1,7 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.model.base.EntidadeBase;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,14 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "produto")
+@EntityListeners({ GenericoListener.class })
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Produto {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Produto extends EntidadeBase {
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
@@ -28,6 +25,9 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
 
+    @Lob
+    private byte[] foto;
+
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -36,5 +36,14 @@ public class Produto {
 
     @OneToOne(mappedBy = "produto")
     private Estoque estoque;
+
+    @ElementCollection
+    @CollectionTable(name = "produto_tag", joinColumns = @JoinColumn(name = "produto_id"))
+    @Column(name = "tag")
+    private List<String> tags;
+
+    @ElementCollection
+    @CollectionTable(name = "produto_atributo", joinColumns = @JoinColumn(name = "produto_id"))
+    private List<Atributo> atributos;
 
 }

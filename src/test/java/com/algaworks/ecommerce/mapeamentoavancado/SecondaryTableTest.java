@@ -1,18 +1,24 @@
-package com.algaworks.ecommerce.mapeamentobasico;
+package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.enums.Sexo;
-import org.junit.Assert;
 import org.junit.Test;
 
-public class MapeandoEnumeracoesTest extends EntityManagerConfig {
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+
+import static org.junit.Assert.assertNotNull;
+
+public class SecondaryTableTest extends EntityManagerConfig {
 
     @Test
-    public void testarEnum() {
+    public void deve_salvar_cliente() {
         var cliente = new Cliente();
-        cliente.setNome("José Mineiro");
+        cliente.setNome("Carlos Finotti");
         cliente.setSexo(Sexo.MASCULINO);
+        cliente.setDataNascimento(LocalDate.of(Year.now().getValue(), Month.AUGUST, 8));
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
@@ -21,8 +27,7 @@ public class MapeandoEnumeracoesTest extends EntityManagerConfig {
         entityManager.clear();
 
         var clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-
-        Assert.assertNotNull(clienteVerificacao);
+        assertNotNull(clienteVerificacao.getSexo());
     }
 
 }

@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.relacionamentos;
 
-import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.PagamentoCartao;
 import com.algaworks.ecommerce.model.Pedido;
@@ -11,14 +11,14 @@ import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
-public class RelacionamentoOneToOneTest extends EntityManagerTest {
+public class RelacionamentoOneToOneTest extends EntityManagerConfig {
 
     @Test
     public void verificarRelacionamento() {
         var pedido = entityManager.find(Pedido.class, 1);
 
-        var pagamentoCartao = new PagamentoCartao();
-        pagamentoCartao.setNumero("1234");
+        PagamentoCartao pagamentoCartao = new PagamentoCartao();
+        pagamentoCartao.setNumeroCartao("1234");
         pagamentoCartao.setStatus(StatusPagamento.PROCESSANDO);
         pagamentoCartao.setPedido(pedido);
 
@@ -29,7 +29,7 @@ public class RelacionamentoOneToOneTest extends EntityManagerTest {
         entityManager.clear();
 
         var pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        assertNotNull(pedidoVerificacao.getPagamentoCartao());
+        assertNotNull(pedidoVerificacao.getPagamento());
     }
 
     @Test
@@ -37,7 +37,6 @@ public class RelacionamentoOneToOneTest extends EntityManagerTest {
         var pedido = entityManager.find(Pedido.class, 1);
 
         var notaFiscal = new NotaFiscal();
-        notaFiscal.setXml("TESTE");
         notaFiscal.setDataEmissao(new Date());
         notaFiscal.setPedido(pedido);
 

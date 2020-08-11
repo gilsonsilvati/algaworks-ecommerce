@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class EntityManagerTest {
+public class EntityManagerConfig {
 
     private static EntityManagerFactory entityManagerFactory;
 
