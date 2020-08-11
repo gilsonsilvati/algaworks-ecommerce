@@ -1,24 +1,18 @@
 package com.algaworks.ecommerce.model;
 
-import com.algaworks.ecommerce.model.base.EntidadeBase;
-import com.algaworks.ecommerce.model.enums.StatusPagamento;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "pagamento_cartao")
 @Getter @Setter
-public class PagamentoCartao extends EntidadeBase {
+public class PagamentoCartao extends Pagamento {
 
-    @MapsId
-    @OneToOne(optional = false)
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
-
-    @Enumerated(EnumType.STRING)
-    private StatusPagamento status;
-
-    private String numero;
+    @Column(name = "numero_cartao")
+    private String numeroCartao;
 
 }
