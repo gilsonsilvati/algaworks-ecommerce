@@ -10,20 +10,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "produto")
+@Table(name = "produto", uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) },
+    indexes = { @Index(name = "idx_nome", columnList = "nome") })
 @EntityListeners({ GenericoListener.class })
 @Getter @Setter
 public class Produto extends EntidadeBase {
+
+    private String nome;
+    private String descricao;
+    private BigDecimal preco;
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
-
-    private String nome;
-    private String descricao;
-    private BigDecimal preco;
 
     @Lob
     private byte[] foto;
