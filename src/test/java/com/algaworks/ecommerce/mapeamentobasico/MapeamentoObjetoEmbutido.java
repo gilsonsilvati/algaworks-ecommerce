@@ -31,7 +31,7 @@ public class MapeamentoObjetoEmbutido extends EntityManagerConfig {
 
     private EnderecoEntrega criaEnderecoEntrega() {
         var enderecoEntrega = new EnderecoEntrega();
-        enderecoEntrega.setCep("00000-000");
+        enderecoEntrega.setCep("00000000");
         enderecoEntrega.setLogradouro("Rua das Laranjeiras");
         enderecoEntrega.setNumero("123");
         enderecoEntrega.setEstado("MG");
@@ -45,7 +45,6 @@ public class MapeamentoObjetoEmbutido extends EntityManagerConfig {
         var cliente = entityManager.find(Cliente.class, 1);
 
         var pedido = new Pedido();
-        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
         pedido.setCliente(cliente);

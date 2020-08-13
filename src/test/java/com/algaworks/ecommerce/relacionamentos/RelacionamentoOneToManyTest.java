@@ -18,7 +18,6 @@ public class RelacionamentoOneToManyTest extends EntityManagerConfig {
 
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
-        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 
@@ -40,7 +39,6 @@ public class RelacionamentoOneToManyTest extends EntityManagerConfig {
 
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
-        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 

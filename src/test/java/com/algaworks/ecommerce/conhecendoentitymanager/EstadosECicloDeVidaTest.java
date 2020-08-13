@@ -8,11 +8,12 @@ public class EstadosECicloDeVidaTest extends EntityManagerConfig {
 
     @Test
     public void analisarEstados() {
-        Categoria categoriaNovo = new Categoria();
+        var categoriaNovo = new Categoria();
+        categoriaNovo.setNome("Eletro");
 
-        Categoria categoriaGerenciadaMerge = entityManager.merge(categoriaNovo);
+        var categoriaGerenciadaMerge = entityManager.merge(categoriaNovo);
 
-        Categoria categoriaGerenciada = entityManager.find(Categoria.class, 1);
+        var categoriaGerenciada = entityManager.find(Categoria.class, 1);
 
         entityManager.remove(categoriaGerenciada);
         entityManager.persist(categoriaGerenciada);

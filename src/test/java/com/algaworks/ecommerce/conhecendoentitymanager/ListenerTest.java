@@ -8,6 +8,8 @@ import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 public class ListenerTest extends EntityManagerConfig {
 
     @Test
@@ -23,6 +25,7 @@ public class ListenerTest extends EntityManagerConfig {
         var pedido = new Pedido();
         pedido.setCliente(cliente);
         pedido.setStatus(StatusPedido.AGUARDANDO);
+        pedido.setTotal(BigDecimal.TEN);
 
         entityManager.getTransaction().begin();
 
