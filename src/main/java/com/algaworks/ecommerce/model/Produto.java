@@ -19,7 +19,7 @@ public class Produto extends EntidadeBase {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Column(columnDefinition = "varchar(275) default 'Produto XPTO'")
+    @Lob
     private String descricao;
 
     @Column(precision = 10, scale = 2)
