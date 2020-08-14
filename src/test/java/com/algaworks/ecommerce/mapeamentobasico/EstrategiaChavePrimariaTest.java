@@ -10,7 +10,7 @@ public class EstrategiaChavePrimariaTest extends EntityManagerConfig {
     @Test
     public void testarEstrategiaChave() {
         var categoria = new Categoria();
-        categoria.setNome("Eletrônicos");
+        categoria.setNome("Natação");
 
         entityManager.getTransaction().begin();
         entityManager.persist(categoria);

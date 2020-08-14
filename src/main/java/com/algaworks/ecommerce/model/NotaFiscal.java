@@ -11,15 +11,17 @@ import java.util.Date;
 @Getter @Setter
 public class NotaFiscal extends EntidadeBase {
 
-    @MapsId // Quando nossa FK também é uma PK
+    @MapsId
     @OneToOne(optional = false)
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_nota_fiscal_pedido"))
     private Pedido pedido;
 
+    @Column(nullable = false)
     @Lob
     private byte[] xml;
 
-    @Column(name = "data_emissao")
+    @Column(name = "data_emissao", nullable = false)
     private Date dataEmissao;
 
 }

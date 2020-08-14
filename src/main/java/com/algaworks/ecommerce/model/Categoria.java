@@ -7,14 +7,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "categoria", uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) })
 @Getter @Setter
 public class Categoria extends EntidadeBase {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_pai_id")
+    @JoinColumn(name = "categoria_pai_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_categoria_categoriapai"))
     private Categoria categoriaPai;
 
     @OneToMany(mappedBy = "categoriaPai")

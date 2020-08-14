@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
+import com.algaworks.ecommerce.model.enums.Sexo;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
 import org.junit.Test;
 
@@ -15,6 +16,8 @@ public class HerancaTest extends EntityManagerConfig {
     public void deve_salvar_cliente() {
         var cliente = new Cliente();
         cliente.setNome("Fernanda Morais");
+        cliente.setCpf("123456");
+        cliente.setSexo(Sexo.FEMININO);
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

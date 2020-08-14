@@ -10,20 +10,26 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) },
+    indexes = { @Index(name = "idx_nome", columnList = "nome"), @Index(name = "idx_cpf", columnList = "cpf") })
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Getter @Setter
 public class Cliente extends EntidadeBase {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
+    @Column(length = 11, nullable = false)
+    private String cpf;
+
     @ElementCollection
-    @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id"))
+    @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_cliente_contato_cliente")))
     @MapKeyColumn(name = "tipo")
     @Column(name = "descricao")
     private Map<String, String> contatos;
 
-    @Column(table = "cliente_detalhe")
+    @Column(length = 30, nullable = false, table = "cliente_detalhe")
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 

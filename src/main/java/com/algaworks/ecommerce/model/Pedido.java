@@ -18,13 +18,14 @@ import java.util.List;
 public class Pedido extends EntidadeBase {
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
-    @Column(name = "data_criacao", updatable = false)
+    @Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
@@ -33,8 +34,10 @@ public class Pedido extends EntidadeBase {
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal total;
 
+    @Column(length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 

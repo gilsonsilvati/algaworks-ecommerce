@@ -18,6 +18,7 @@ public class MapsIdTest extends EntityManagerConfig {
         NotaFiscal notaFiscal = new NotaFiscal();
         notaFiscal.setPedido(pedido);
         notaFiscal.setDataEmissao(new Date());
+        notaFiscal.setXml("<xml />".getBytes());
 
         entityManager.getTransaction().begin();
         entityManager.persist(notaFiscal);
@@ -37,7 +38,6 @@ public class MapsIdTest extends EntityManagerConfig {
 
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(produto.getPreco());
 
