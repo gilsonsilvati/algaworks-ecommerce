@@ -12,7 +12,8 @@ import java.util.Map;
 @Entity
 @Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) },
     indexes = { @Index(name = "idx_nome", columnList = "nome"), @Index(name = "idx_cpf", columnList = "cpf") })
-@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
+@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
+        foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente"))
 @Getter @Setter
 public class Cliente extends EntidadeBase {
 
