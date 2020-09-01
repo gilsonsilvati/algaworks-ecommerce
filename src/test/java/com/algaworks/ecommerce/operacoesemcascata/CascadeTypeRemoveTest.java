@@ -4,12 +4,29 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.ItemPedido;
 import com.algaworks.ecommerce.model.ItemPedidoId;
 import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerConfig {
 
-//     @Test
+    @Test
+    public void removerRelacaoProdutoCategoria() {
+        var produto = entityManager.find(Produto.class, 1);
+
+        Assert.assertFalse(produto.getCategorias().isEmpty());
+
+        entityManager.getTransaction().begin();
+        produto.getCategorias().clear();
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        var produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertTrue(produtoVerificacao.getCategorias().isEmpty());
+    }
+
+    //     @Test
     public void removerPedidoEItens() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
