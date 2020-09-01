@@ -10,6 +10,22 @@ import org.junit.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerConfig {
 
+//     @Test
+    public void removerItensOrfaos() {
+        var pedido = entityManager.find(Pedido.class, 1);
+
+        Assert.assertFalse(pedido.getItens().isEmpty());
+
+        entityManager.getTransaction().begin();
+        pedido.getItens().clear();
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        var pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
+        Assert.assertTrue(pedidoVerificacao.getItens().isEmpty());
+    }
+
     @Test
     public void removerRelacaoProdutoCategoria() {
         var produto = entityManager.find(Produto.class, 1);
