@@ -10,12 +10,23 @@ import java.util.List;
 public class JoinTest extends EntityManagerConfig {
 
     @Test
-    public void fazerJoin() {
-        String jpql = "select p from Pedido p join p.pagamento pag";
+    public void fazerLeftJoin() {
+        String jpql = "SELECT p FROM Pedido p LEFT JOIN p.pagamento pag ON pag.status = 'PROCESSANDO'";
 
         TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
 
         List<Object[]> lista = typedQuery.getResultList();
-        Assert.assertTrue(lista.size() == 1);
+        Assert.assertFalse(lista.isEmpty());
     }
+
+    @Test
+    public void fazerJoin() {
+        String jpql = "SELECT p FROM Pedido p JOIN p.pagamento pag";
+
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+    }
+
 }
