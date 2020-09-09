@@ -31,4 +31,5 @@ public class PathExpressionTest extends EntityManagerConfig {
         List<Object[]> lista = typedQuery.getResultList();
         Assert.assertFalse(lista.isEmpty());
     }
+
 }
