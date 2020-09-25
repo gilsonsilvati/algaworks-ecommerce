@@ -11,6 +11,37 @@ import java.util.TimeZone;
 public class GroupByTest extends EntityManagerConfig {
 
     @Test
+    public void agruparEFiltrarResultado() {
+        StringBuilder sb = new StringBuilder();
+
+        // Total de vendas por mês e do ano corrente (atual)
+//        sb.append("select concat(year(p.dataCriacao), '-', function('monthname', p.dataCriacao)), sum(p.total) ");
+//        sb.append("from Pedido p ");
+//        sb.append("where year(p.dataCriacao) = year(current_date) ");
+//        sb.append("group by year(p.dataCriacao), month(p.dataCriacao)");
+
+        // Total de vendas por categoria e do ano e mês corrente (atual)
+//        sb.append("select c.nome, sum(ip.precoProduto) from ItemPedido ip ");
+//        sb.append("join ip.produto pro join pro.categorias c join ip.pedido p ");
+//        sb.append("where year(p.dataCriacao) = year(current_date) and month(p.dataCriacao) = month(current_date) ");
+//        sb.append("group by c.id");
+
+        // Total de vendas por cliente e do ano corrente (atual) dos últimos 3 meses
+        sb.append("select c.nome, sum(ip.precoProduto) from ItemPedido ip ");
+        sb.append("join ip.pedido p join p.cliente c join ip.pedido p ");
+        sb.append("where year(p.dataCriacao) = year(current_date) ");
+        sb.append("and month(p.dataCriacao) >= (month(current_date) - 3) ");
+        sb.append("group by c.id");
+
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(sb.toString(), Object[].class);
+        List<Object[]> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(arr -> System.out.println(arr[0] + ", " + arr[1]));
+    }
+
+    @Test
     public void agruparResultado() {
         StringBuilder sb = new StringBuilder();
 
@@ -42,8 +73,8 @@ public class GroupByTest extends EntityManagerConfig {
         sb.append("order by p.dataCriacao, c.nome");
 
         TypedQuery<Object[]> typedQuery = entityManager.createQuery(sb.toString(), Object[].class);
-
         List<Object[]> lista = typedQuery.getResultList();
+
         Assert.assertFalse(lista.isEmpty());
 
         lista.forEach(r -> System.out.println(r[0] + " - " + r[1]));
