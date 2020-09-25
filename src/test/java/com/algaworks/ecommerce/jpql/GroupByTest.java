@@ -24,16 +24,29 @@ public class GroupByTest extends EntityManagerConfig {
 //        sb.append("group by year(p.dataCriacao), month(p.dataCriacao)");
 
         // Total de vendas por categoria
-        sb.append("select c.nome, sum(ip.precoProduto) from ItemPedido ip ");
-        sb.append("join ip.produto prod join prod.categorias c ");
-        sb.append("group by c.id");
+//        sb.append("select c.nome, sum(ip.precoProduto) from ItemPedido ip ");
+//        sb.append("join ip.produto prod join prod.categorias c ");
+//        sb.append("group by c.id");
+
+        // Total de vendas por cliente
+//        sb.append("select c.nome, sum(ip.precoProduto) from ItemPedido ip ");
+//        sb.append("join ip.pedido p ");
+//        sb.append("join p.cliente c ");
+//        sb.append("group by c.id");
+
+        // Total de vendas por dia e por categoria
+        sb.append("select concat(year(p.dataCriacao), '/', month(p.dataCriacao), '/', day(p.dataCriacao)), ");
+        sb.append("concat(c.nome, ': ', sum(ip.precoProduto)) ");
+        sb.append("from ItemPedido ip join ip.pedido p join ip.produto pro join pro.categorias c ");
+        sb.append("group by year(p.dataCriacao), month(p.dataCriacao), day(p.dataCriacao), c.id ");
+        sb.append("order by p.dataCriacao, c.nome");
 
         TypedQuery<Object[]> typedQuery = entityManager.createQuery(sb.toString(), Object[].class);
 
         List<Object[]> lista = typedQuery.getResultList();
         Assert.assertFalse(lista.isEmpty());
 
-        lista.forEach(r -> System.out.println(r[0] + ", " + r[1]));
+        lista.forEach(r -> System.out.println(r[0] + " - " + r[1]));
     }
 
 }
