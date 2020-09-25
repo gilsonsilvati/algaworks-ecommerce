@@ -11,6 +11,28 @@ import java.util.TimeZone;
 public class GroupByTest extends EntityManagerConfig {
 
     @Test
+    public void condicionarAgrupamentoComHaving() {
+        // * Dica: having -> só pode ser usado com as funções de agregação ou com as propriedades que estão no group by
+
+        StringBuilder sb = new StringBuilder();
+
+        // Total de vendas dentre as categorias que mais vendem
+        sb.append("select cat.nome, sum(ip.precoProduto) from ItemPedido ip ");
+        sb.append("join ip.produto prod join prod.categorias cat ");
+        sb.append("group by cat.id ");
+//        sb.append("having ip.id"); Erro
+//        sb.append("having cat.id > 2"); Erro
+        sb.append("having sum(ip.precoProduto) > 1600");
+
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(sb.toString(), Object[].class);
+        List<Object[]> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(arr -> System.out.println(arr[0] + " - " + arr[1]));
+    }
+
+    @Test
     public void agruparEFiltrarResultado() {
         StringBuilder sb = new StringBuilder();
 
