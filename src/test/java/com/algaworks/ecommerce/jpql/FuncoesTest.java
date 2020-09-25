@@ -12,6 +12,25 @@ import java.util.TimeZone;
 public class FuncoesTest extends EntityManagerConfig {
 
     @Test
+    public void aplicarFuncaoAgregacao() {
+        // Funções Agregação: avg: double, count: long, (min, max, sum): tipo da propriedade, por exemplo: Bigdecimal
+        // Tipo Number atende todos esses casos
+
+//        String jpql = "select avg(p.total) from Pedido p";
+//        String jpql = "select count(p.dataCriacao) from Pedido p";
+//        String jpql = "select min(p.total) from Pedido p";
+//        String jpql = "select max(p.total) from Pedido p";
+        String jpql = "select sum(p.total) from Pedido p";
+
+        TypedQuery<Number> typedQuery = entityManager.createQuery(jpql, Number.class);
+
+        List<Number> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(System.out::println);
+    }
+
+    @Test
     public void aplicarFuncaoNativas() {
         // Funções Criada: acima_media_faturamento
         // Funções Nativa: dayname
