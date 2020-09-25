@@ -11,8 +11,22 @@ import java.util.TimeZone;
 public class FuncoesTest extends EntityManagerConfig {
 
     @Test
+    public void aplicarFuncaoColecao() {
+        // Funções Numero: size
+
+        String jpql = "select size(p.itens) from Pedido p where size(p.itens) > 1";
+
+        TypedQuery<Integer> typedQuery = entityManager.createQuery(jpql, Integer.class);
+
+        List<Integer> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(System.out::println);
+    }
+
+    @Test
     public void aplicarFuncaoNumero() {
-        // Funções Numero: abs(), mod(), sqtr()
+        // Funções Numero: abs, mod, sqtr
 
         String jpql = "select abs(-10), mod(3, 2), sqrt(9) from Pedido";
 
