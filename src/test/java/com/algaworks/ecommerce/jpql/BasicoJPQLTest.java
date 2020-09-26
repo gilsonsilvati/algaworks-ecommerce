@@ -11,7 +11,26 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
+
 public class BasicoJPQLTest extends EntityManagerConfig {
+
+    @Test
+    public void usarDistinct() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("select distinct p from Pedido p ");
+        builder.append("join p.itens i join i.produto prod ");
+        builder.append("where prod.id in (1, 2, 3, 4)");
+
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(builder.toString(), Pedido.class);
+        List<Pedido> pedidos = typedQuery.getResultList();
+
+        assertFalse(pedidos.isEmpty());
+
+        System.out.println("\n>>> Tamanho da lista: " + pedidos.size());
+        pedidos.forEach(pedido -> System.out.println(">>> id pedido: " + pedido.getId()));
+    }
 
     @Test
     public void ordenarResultados() {
@@ -20,7 +39,7 @@ public class BasicoJPQLTest extends EntityManagerConfig {
         TypedQuery<Cliente> typedQuery = entityManager.createQuery(jpql, Cliente.class);
 
         List<Cliente> lista = typedQuery.getResultList();
-        Assert.assertFalse(lista.isEmpty());
+        assertFalse(lista.isEmpty());
 
         lista.forEach(c -> System.out.println(c.getId() + ", " + c.getNome()));
     }
@@ -32,7 +51,7 @@ public class BasicoJPQLTest extends EntityManagerConfig {
         TypedQuery<ProdutoDTO> typedQuery = entityManager.createQuery(jpql, ProdutoDTO.class);
         List<ProdutoDTO> lista = typedQuery.getResultList();
 
-        Assert.assertFalse(lista.isEmpty());
+        assertFalse(lista.isEmpty());
 
         lista.forEach(p -> System.out.println(p.getId() + " - " + p.getNome()));
     }
