@@ -15,6 +15,22 @@ import static org.junit.Assert.assertFalse;
 public class SubqueriesTest extends EntityManagerConfig {
 
     @Test
+    public void pesquisarSubqueriesComIn() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("select p from Pedido p where p.id in ");
+        builder.append("(select p2.id from ItemPedido i2 join i2.pedido p2 join i2.produto prod2 ");
+        builder.append("where prod2.preco > 100)");
+
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(builder.toString(), Pedido.class);
+        List<Pedido> lista = typedQuery.getResultList();
+
+        assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
+
+    @Test
     public void pesquisarSubqueries() {
         StringBuilder builder = new StringBuilder();
 
