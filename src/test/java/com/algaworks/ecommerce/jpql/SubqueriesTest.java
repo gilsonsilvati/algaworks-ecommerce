@@ -4,7 +4,6 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
-import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -13,6 +12,21 @@ import java.util.List;
 import static org.junit.Assert.assertFalse;
 
 public class SubqueriesTest extends EntityManagerConfig {
+
+    @Test
+    public void pesquisarSubqueriesComExists() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("select p from Produto p where exists ");
+        builder.append("(select 1 from ItemPedido ip join ip.produto p2 where p2 = p)");
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(builder.toString(), Produto.class);
+        List<Produto> lista = typedQuery.getResultList();
+
+        assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
 
     @Test
     public void pesquisarSubqueriesComIn() {
