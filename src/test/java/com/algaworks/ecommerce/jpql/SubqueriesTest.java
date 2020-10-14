@@ -14,16 +14,33 @@ import static org.junit.Assert.assertFalse;
 public class SubqueriesTest extends EntityManagerConfig {
 
     @Test
+    public void perquisarComALL() {
+        StringBuilder builder = new StringBuilder();
+
+        // Todos os produtos que não foram vendidos mais depois que encareceram
+        builder.append("select p from Produto p where ");
+//        builder.append("p.preco > ALL (select precoProduto from ItemPedido where produto = p)");
+        builder.append("p.preco > (select max(precoProduto) from ItemPedido where produto = p)");
+
+        // Todos os produtos que sempre foram vendidos pelo preco atual
+//        builder.append("select p from Produto p where ");
+//        builder.append("p.preco = ALL (select precoProduto from ItemPedido where produto = p)");
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(builder.toString(), Produto.class);
+
+        List<Produto> lista = typedQuery.getResultList();
+        assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
+
+    @Test
     public void perquisarComExistsExercicio() {
         StringBuilder builder = new StringBuilder();
 
         builder.append("select p from Produto p ");
         builder.append("where exists ");
         builder.append("(select 1 from ItemPedido where produto = p and precoProduto <> p.preco)");
-
-        String jpql = "select p from Produto p " +
-                " where exists " +
-                " (select 1 from ItemPedido where produto = p and precoProduto <> p.preco)";
 
         TypedQuery<Produto> typedQuery = entityManager.createQuery(builder.toString(), Produto.class);
 
