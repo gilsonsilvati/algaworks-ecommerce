@@ -15,6 +15,23 @@ import static org.junit.Assert.assertFalse;
 public class SubqueriesTest extends EntityManagerConfig {
 
     @Test
+    public void pesquisarComAllExercicio() {
+        // Todos os produtos que sempre foram vendidos pelo mesmo preço.
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("select distinct p from ItemPedido ip join ip.produto p where ");
+        builder.append("ip.precoProduto = ALL ");
+        builder.append("(select precoProduto from ItemPedido where produto = p and id <> ip.id)");
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(builder.toString(), Produto.class);
+
+        List<Produto> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
+
+    @Test
     public void pesquisarComANY() {
         StringBuilder builder = new StringBuilder();
         // Podemos usar o ANY e o SOME
