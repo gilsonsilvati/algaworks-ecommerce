@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 public class EntityManagerConfig {
 
-    private static EntityManagerFactory entityManagerFactory;
+    protected static EntityManagerFactory entityManagerFactory;
 
     protected EntityManager entityManager;
 
