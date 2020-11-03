@@ -26,7 +26,7 @@ public class AbordagemHibridaTest extends EntityManagerConfig {
     }
 
     @Test
-    public void usarAbordagemHibrida(){
+    public void usarAbordagemHibrida() {
         TypedQuery<Categoria> typedQuery = entityManager.createNamedQuery("Categoria.listar", Categoria.class);
 
         List<Categoria> lista = typedQuery.getResultList();
