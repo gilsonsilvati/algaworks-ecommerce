@@ -2,7 +2,8 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.model.base.EntidadeBase;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +13,10 @@ import java.util.List;
 @Entity
 @Table(name = "produto", uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) },
     indexes = { @Index(name = "idx_nome", columnList = "nome") })
+@NamedQueries({
+        @NamedQuery(name = "Produto.listar", query = "select p from Produto p"),
+        @NamedQuery(name = "Produto.listarPorCategoria", query = "select p from Produto p where exists (select 1 from Categoria c2 join c2.produtos p2 where p2 = p and c2.id = :categoria)")
+})
 @EntityListeners({ GenericoListener.class })
 @Getter @Setter
 public class Produto extends EntidadeBase {
