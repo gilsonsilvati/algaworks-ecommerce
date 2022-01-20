@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 public class DDLTest extends EntityManagerConfig {
 
     @Test
-    public void deve_executar_ddl() { }
+    public void deve_executar_ddl() {
+    }
 
 }
