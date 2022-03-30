@@ -2,11 +2,13 @@ package com.algaworks.ecommerce.relacionamentos;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Categoria;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+@Ignore
 public class AutoRelacionamentoTest extends EntityManagerConfig {
 
     @Test

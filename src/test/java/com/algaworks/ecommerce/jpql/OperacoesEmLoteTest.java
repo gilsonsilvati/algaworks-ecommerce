@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.jpql;
 
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Produto;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.Query;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+@Ignore
 public class OperacoesEmLoteTest extends EntityManagerConfig {
 
     private static final int LIMITE_INSERCOES = 4;

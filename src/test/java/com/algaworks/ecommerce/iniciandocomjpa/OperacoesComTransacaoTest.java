@@ -3,10 +3,12 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 
+@Ignore
 public class OperacoesComTransacaoTest extends EntityManagerConfig {
 
     @Test
@@ -22,7 +24,7 @@ public class OperacoesComTransacaoTest extends EntityManagerConfig {
 
         var produtoVerificacao = entityManager.find(Produto.class, produto.getId());
 
-        Assert.assertEquals("Kindle", produtoVerificacao.getNome());
+        Assert.assertEquals("Kindle Paperwhite 2ª Geração", produtoVerificacao.getNome());
     }
 
     @Test
@@ -79,7 +81,7 @@ public class OperacoesComTransacaoTest extends EntityManagerConfig {
 
     @Test
     public void removerObjeto() {
-        var produto = entityManager.find(Produto.class, 3);
+        var produto = entityManager.find(Produto.class, 4);
 
         entityManager.getTransaction().begin();
         entityManager.remove(produto);
@@ -94,7 +96,7 @@ public class OperacoesComTransacaoTest extends EntityManagerConfig {
     public void inserirOPrimeiroObjeto() {
         var produto = new Produto();
 
-        produto.setNome("Câmera Canon");
+        produto.setNome("Câmera Canon XPTO");
         produto.setDescricao("A melhor definição para suas fotos.");
         produto.setPreco(new BigDecimal(5000));
 

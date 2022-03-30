@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.enums.Sexo;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.Year;
 
 import static org.junit.Assert.assertNotNull;
 
+@Ignore
 public class SecondaryTableTest extends EntityManagerConfig {
 
     @Test

@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ConsultandoRegistrosTest extends EntityManagerConfig {
@@ -17,6 +18,7 @@ public class ConsultandoRegistrosTest extends EntityManagerConfig {
     }
 
     @Test
+    @Ignore
     public void atualizarAReferencia() {
         var produto = entityManager.find(Produto.class, 1);
         produto.setNome("Microfone Samson");

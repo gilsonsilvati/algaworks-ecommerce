@@ -4,8 +4,10 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.enums.Sexo;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class MapeandoEnumeracoesTest extends EntityManagerConfig {
 
     @Test

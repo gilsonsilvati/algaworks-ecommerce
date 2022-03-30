@@ -4,11 +4,13 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Ignore
 public class MapsIdTest extends EntityManagerConfig {
 
     @Test

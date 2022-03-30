@@ -5,6 +5,7 @@ import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.TemporalType;
@@ -12,6 +13,7 @@ import javax.persistence.TypedQuery;
 import java.util.Date;
 import java.util.List;
 
+@Ignore
 public class PassandoParametrosTest extends EntityManagerConfig {
 
     @Test

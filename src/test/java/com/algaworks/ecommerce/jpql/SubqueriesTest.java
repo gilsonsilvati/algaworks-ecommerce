@@ -5,6 +5,7 @@ import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -53,6 +54,7 @@ public class SubqueriesTest extends EntityManagerConfig {
     }
 
     @Test
+    @Ignore
     public void perquisarComALL() {
         StringBuilder builder = new StringBuilder();
 
@@ -105,6 +107,7 @@ public class SubqueriesTest extends EntityManagerConfig {
     }
 
     @Test
+    @Ignore
     public void pesquisarComInExercicio() {
         StringBuilder builder = new StringBuilder();
 

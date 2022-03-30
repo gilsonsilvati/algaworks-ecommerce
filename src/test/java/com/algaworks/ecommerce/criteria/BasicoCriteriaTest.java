@@ -28,7 +28,7 @@ public class BasicoCriteriaTest extends EntityManagerConfig {
         TypedQuery<Cliente> typedQuery = entityManager.createQuery(criteriaQuery);
         Cliente cliente = typedQuery.getSingleResult();
 
-        assertEquals("000", cliente.getCpf());
+        assertEquals("123", cliente.getCpf());
     }
 
     @Test

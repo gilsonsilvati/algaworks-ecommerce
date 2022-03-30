@@ -5,12 +5,14 @@ import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.PagamentoCartao;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
+@Ignore
 public class RelacionamentoOneToOneTest extends EntityManagerConfig {
 
     @Test

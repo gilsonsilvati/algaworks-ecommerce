@@ -4,6 +4,7 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Produto;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -12,6 +13,7 @@ import java.util.List;
 public class DynamicQueryTest extends EntityManagerConfig {
 
     @Test
+    @Ignore
     public void executarConsultaDinamica() {
         Produto consultado = new Produto();
         consultado.setNome("Câmera GoPro");

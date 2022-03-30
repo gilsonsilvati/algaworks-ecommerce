@@ -4,12 +4,14 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.Sexo;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+@Ignore
 public class HerancaTest extends EntityManagerConfig {
 
     @Test

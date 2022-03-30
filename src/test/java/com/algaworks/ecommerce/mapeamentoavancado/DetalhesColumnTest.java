@@ -3,12 +3,14 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+@Ignore
 public class DetalhesColumnTest extends EntityManagerConfig {
 
     @Test

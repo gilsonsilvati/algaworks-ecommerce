@@ -4,6 +4,7 @@ import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -39,6 +40,7 @@ public class NamedQueryTest extends EntityManagerConfig {
     }
 
     @Test
+    @Ignore
     public void executarConsulta() {
         TypedQuery<Produto> typedQuery = entityManager.createNamedQuery("Produto.listarPorCategoria", Produto.class);
         typedQuery.setParameter("categoria", 2);

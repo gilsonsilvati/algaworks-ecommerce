@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -43,6 +44,7 @@ public class ChaveCompostaTest extends EntityManagerConfig {
     }
 
     @Test
+    @Ignore
     public void bucarItem() {
         var itemPedido = entityManager.find(ItemPedido.class, new ItemPedidoId(1, 1));
         assertNotNull(itemPedido);

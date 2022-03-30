@@ -3,8 +3,10 @@ package com.algaworks.ecommerce.mapeamentobasico;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Categoria;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class EstrategiaChavePrimariaTest extends EntityManagerConfig {
 
     @Test
