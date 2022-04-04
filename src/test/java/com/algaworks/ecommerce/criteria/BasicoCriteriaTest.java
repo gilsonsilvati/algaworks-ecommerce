@@ -3,7 +3,6 @@ package com.algaworks.ecommerce.criteria;
 import com.algaworks.ecommerce.EntityManagerConfig;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
-import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -38,7 +37,7 @@ public class BasicoCriteriaTest extends EntityManagerConfig {
         Root<Pedido> root = criteriaQuery.from(Pedido.class);
 
         //String jpql = "select p from Pedido p where p.id = 1";
-        criteriaQuery.select(root);
+        criteriaQuery.select(root); // Nao precisa quando o tipo do Root é o mesmo do CriteriaQuery
         criteriaQuery.where(criteriaBuilder.equal(root.get("id"), 1));
 
         TypedQuery<Pedido> typedQuery = entityManager
