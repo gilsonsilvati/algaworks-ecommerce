@@ -18,6 +18,25 @@ import static org.junit.Assert.*;
 public class BasicoCriteriaTest extends EntityManagerConfig {
 
     @Test
+    public void projetarOResultado() {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+        Root<Produto> root = criteriaQuery.from(Produto.class);
+
+        criteriaQuery.multiselect(
+                root.get("id"),
+                root.get("nome")
+        );
+
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+        List<Object[]> produtos = typedQuery.getResultList();
+
+        assertFalse(produtos.isEmpty());
+
+        produtos.forEach(produto -> System.out.println("ID: " + produto[0] + ", Nome: " + produto[1]));
+    }
+
+    @Test
     public void selecionarTodosOsProdutosExercicio() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
