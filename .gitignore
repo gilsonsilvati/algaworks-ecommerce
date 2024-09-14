@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/stackspot_ai_project_state.xml
 *.iws
 *.iml
 *.ipr

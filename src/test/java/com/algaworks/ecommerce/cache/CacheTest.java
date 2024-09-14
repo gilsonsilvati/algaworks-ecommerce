@@ -15,8 +15,7 @@ public class CacheTest {
 
     @BeforeAll
     public static void setUpBeforeClass() {
-        entityManagerFactory = Persistence
-                .createEntityManagerFactory("Ecommerce-PU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
     }
 
     @AfterAll
@@ -24,9 +23,8 @@ public class CacheTest {
         entityManagerFactory.close();
     }
 
-
     @Test
-    public void buscarDoCache() {
+    void buscarDoCache() {
         EntityManager entityManager1 = entityManagerFactory.createEntityManager();
         EntityManager entityManager2 = entityManagerFactory.createEntityManager();
 
