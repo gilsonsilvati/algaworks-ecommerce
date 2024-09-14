@@ -3,10 +3,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
              version="3.1">
+
     <persistence-unit name="Ecommerce-PU">
         <mapping-file>META-INF/consultas/pedido.xml</mapping-file>
         <mapping-file>META-INF/consultas/produto.xml</mapping-file>
         <mapping-file>META-INF/consultas/categoria.xml</mapping-file>
+
+        <shared-cache-mode>ALL</shared-cache-mode>
 
         <validation-mode>CALLBACK</validation-mode>
 
@@ -20,8 +23,6 @@
             <property name="hibernate.hikari.maximumPoolSize" value="16" />
             <property name="hibernate.connection.provider_class"
                       value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
-
-            <property name="jakarta.persistence.sharedCache.mode" value="ALL" />
 
             <property name="jakarta.persistence.schema-generation.database.action"
                       value="none" />
@@ -40,7 +41,7 @@
                       value="META-INF/banco-de-dados/dados-iniciais.sql" />
 
             <property name="jakarta.persistence.schema-generation.scripts.action"
-                      value="drop-and-create" />
+                      value="none" />
             <property name="jakarta.persistence.schema-generation.scripts.create-target"
                       value="/tmp/sql/script-criacao-exportado.sql" />
             <property name="jakarta.persistence.schema-generation.scripts.drop-target"

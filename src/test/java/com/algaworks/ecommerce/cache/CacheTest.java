@@ -9,6 +9,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class CacheTest {
 
     protected static EntityManagerFactory entityManagerFactory;
@@ -27,7 +29,7 @@ public class CacheTest {
         entityManager1.find(Pedido.class, 1);
 
         System.out.println("Buscando a partir da instância 2:");
-        entityManager2.find(Pedido.class, 1);
+        entityManager2.find(Pedido.class, 2);
     }
 
     @Test
@@ -54,6 +56,33 @@ public class CacheTest {
         System.out.println("Buscando a partir da instância 2:");
         entityManager2.find(Pedido.class, 1);
         entityManager2.find(Pedido.class, 2);
+    }
+
+    @Test
+    void verificarSeEstaNoCache() {
+        Cache cache = entityManagerFactory.getCache();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        System.out.println(">>> Buscando Pedidos <<<");
+        entityManager
+                .createQuery("SELECT p FROM Pedido p", Pedido.class)
+                .getResultList();
+
+        assertTrue(cache.contains(Pedido.class, 1));
+        assertTrue(cache.contains(Pedido.class, 2));
+    }
+
+    @Test
+    void analisarOpcoesCache() {
+        Cache cache = entityManagerFactory.getCache();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        System.out.println(">>> Buscando Pedidos <<<");
+        entityManager
+                .createQuery("SELECT p FROM Pedido p", Pedido.class)
+                .getResultList();
+
+        assertTrue(cache.contains(Pedido.class, 1));
     }
 
     @AfterAll
