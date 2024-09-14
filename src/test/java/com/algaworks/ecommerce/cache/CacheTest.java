@@ -1,13 +1,13 @@
 package com.algaworks.ecommerce.cache;
 
 import com.algaworks.ecommerce.model.Pedido;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
+import jakarta.persistence.Cache;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class CacheTest {
 
@@ -16,11 +16,6 @@ public class CacheTest {
     @BeforeAll
     public static void setUpBeforeClass() {
         entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
-    }
-
-    @AfterAll
-    public static void tearDownAfterClass() {
-        entityManagerFactory.close();
     }
 
     @Test
@@ -33,5 +28,36 @@ public class CacheTest {
 
         System.out.println("Buscando a partir da instância 2:");
         entityManager2.find(Pedido.class, 1);
+    }
+
+    @Test
+    void removerDoCache() {
+        Cache cache = entityManagerFactory.getCache();
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+
+        System.out.println("Buscando a partir da instância 1:");
+        entityManager1
+                .createQuery("SELECT p FROM Pedido p", Pedido.class)
+                .getResultList();
+
+        System.out.println(">>> Removendo do Cache <<<");
+        // Remove apenas da instância 1
+        // cache.evict(Pedido.class, 1);
+
+        // Remove do cache todas as instâncias de Pedido
+        // cache.evict(Pedido.class);
+
+        // Remove do cache todas as instâncias
+        cache.evictAll();
+
+        System.out.println("Buscando a partir da instância 2:");
+        entityManager2.find(Pedido.class, 1);
+        entityManager2.find(Pedido.class, 2);
+    }
+
+    @AfterAll
+    public static void tearDownAfterClass() {
+        entityManagerFactory.close();
     }
 }
