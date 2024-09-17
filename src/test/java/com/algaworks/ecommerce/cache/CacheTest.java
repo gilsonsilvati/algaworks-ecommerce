@@ -30,6 +30,9 @@ public class CacheTest {
 
         System.out.println("Buscando a partir da instância 2:");
         entityManager2.find(Pedido.class, 2);
+
+        entityManager1.close();
+        entityManager2.close();
     }
 
     @Test
@@ -56,6 +59,9 @@ public class CacheTest {
         System.out.println("Buscando a partir da instância 2:");
         entityManager2.find(Pedido.class, 1);
         entityManager2.find(Pedido.class, 2);
+
+        entityManager1.close();
+        entityManager2.close();
     }
 
     @Test
@@ -70,6 +76,8 @@ public class CacheTest {
 
         assertTrue(cache.contains(Pedido.class, 1));
         assertTrue(cache.contains(Pedido.class, 2));
+
+        entityManager.close();
     }
 
     @Test
@@ -83,6 +91,8 @@ public class CacheTest {
                 .getResultList();
 
         assertTrue(cache.contains(Pedido.class, 1));
+
+        entityManager.close();
     }
 
     @AfterAll

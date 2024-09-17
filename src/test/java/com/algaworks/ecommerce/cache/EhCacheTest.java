@@ -43,6 +43,9 @@ public class EhCacheTest {
 
         esperar(3);
         assertFalse(cache.contains(Pedido.class, 2));
+
+        entityManager1.close();
+        entityManager2.close();
     }
 
     @AfterAll
