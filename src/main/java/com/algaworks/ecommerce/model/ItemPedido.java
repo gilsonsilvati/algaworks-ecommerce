@@ -1,13 +1,23 @@
 package com.algaworks.ecommerce.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityResult;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.SqlResultSetMapping;
+import jakarta.persistence.SqlResultSetMappings;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
 @Getter
@@ -24,6 +34,9 @@ public class ItemPedido {
 
     @EmbeddedId
     private ItemPedidoId id;
+
+    @Version
+    private Integer versao;
 
     @NotNull
     @MapsId("pedidoId")
